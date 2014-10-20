@@ -1,0 +1,12 @@
+{
+    "name": "client-bear",
+    "description": "Client application for server-bear",
+    "version": "0.0.1",
+    "homepage": "https://github.com/andreyluiz/client-bear",
+    "license": "MIT",
+    "devDependencies": {
+        "angular": "~1.3.0",
+        "normalize.css": "~3.0.2",
+        "modernizr": "~2.8.3"
+    }
+}
