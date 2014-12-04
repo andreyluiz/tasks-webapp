@@ -1,0 +1,54 @@
+<div class="container">
+	<div class="jumbotron">
+		<div>
+			<i class="fa fa-list-ul fa-5x"></i>
+			<h1 style="display: inline;margin-left: 20px;">Tasks App <small>Organize yourself</small></h1>
+		</div>
+	</div>
+	<div class="alert alert-danger" ng-if="showErrorMessage(form)">Wait! There's some problems:
+		<ul>
+			<li ng-show="form.username.$dirty && form.username.$invalid">User name is required.</li>
+			<li ng-show="form.password.$dirty && form.password.$invalid">Password is required.</li>
+			<li ng-show="!!serverErrorData" ng-bind="serverErrorData.message"></li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+				<form role="form" name="form">
+					<fieldset>
+						<legend>Login</legend>
+						<label>Username</label>
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+							<input type="text" name="username" class="form-control" placeholder="Username" ng-model="login.username" required ng-disabled="isFormSubmiting()">
+						</div>
+						<label>Password</label>
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+							<input type="password" name="password" class="form-control" placeholder="Password" ng-model="login.password" required ng-disabled="isFormSubmiting()">
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="login.remember" ng-init="login.remember=false"> Remember me
+							</label>
+						</div>
+						<button type="submit" class="btn btn-primary" ng-click="submit(login)" ng-disabled="form.$invalid || isFormSubmiting()">
+							<i class="fa fa-sign-in"></i> Submit</button>
+					</fieldset>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+				<h2>Not registered yet?</h2>
+				<a href="#/register" class="btn btn-lg btn-primary">
+					<i class="fa fa-pencil"></i> Register</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

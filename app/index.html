@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="tasks-webapp">
 <head>
 	<meta charset="UTF-8">
 	<title>Tasks</title>
+	<script src="vendor/jquery/dist/jquery.js"></script>
 	<script src="vendor/angular/angular.js"></script>
+	<script src="vendor/angular-route/angular-route.js"></script>
 	<script src="vendor/modernizr/modernizr.js"></script>
-	<link href="vendor/normalize.css/normalize.css"></script>
+	<script src="vendor/bootswatch-dist/js/bootstrap.js"></script>
+	<script src="vendor/angular-md5/angular-md5.js"></script>
+	
+	<link rel="stylesheet" href="vendor/normalize.css/normalize.css">
+	<link rel="stylesheet" href="vendor/bootswatch-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.css">
+
+	<link rel="stylesheet" href="css/index.css">
 </head>
-<body>
-	{{ 'Hello' + ' World!' }}
+<body ng-controller="AppCtrl">
+	<div class="loading-spinner" loading-spinner>
+		<i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+	</div>
+	<div ng-view></div>
+
+	<script src="js/tasks.js"></script>
+	<script src="js/config/GeneralInterceptor.js"></script>
+	<script src="js/services/SessionService.js"></script>
+	<script src="js/services/AuthService.js"></script>
+	<script src="js/services/Constants.js"></script>
+	<script src="js/services/Variables.js"></script>
+	<script src="js/services/HashService.js"></script>
+	<script src="js/services/UsersService.js"></script>
+	<script src="js/directives/LoadingWidget.js"></script>
+	<script src="js/controllers/AppCtrl.js"></script>
+	<script src="js/controllers/UsersCtrl.js"></script>
+	<script src="js/controllers/LoginCtrl.js"></script>
+	<script src="js/controllers/TasksCtrl.js"></script>
 </body>
 </html>
