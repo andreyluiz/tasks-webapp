@@ -16,7 +16,7 @@
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-body">
-				<form role="form" name="form">
+				<form role="form" name="form" ng-submit="submit(login)">
 					<fieldset>
 						<legend>Login</legend>
 						<label>Username</label>
@@ -34,7 +34,7 @@
 								<input type="checkbox" ng-model="login.remember" ng-init="login.remember=false"> Remember me
 							</label>
 						</div>
-						<button type="submit" class="btn btn-primary" ng-click="submit(login)" ng-disabled="form.$invalid || isFormSubmiting()">
+						<button type="submit" class="btn btn-primary" ng-disabled="form.$invalid || isFormSubmiting()">
 							<i class="fa fa-sign-in"></i> Submit</button>
 					</fieldset>
 				</form>

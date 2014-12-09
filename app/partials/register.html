@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="alert alert-danger" ng-if="showErrorMessage(form)">Wait! There's some problems:
+		<ul>
+			<li ng-show="form.email.$dirty && form.email.$error.required">Email is required.</li>
+			<li ng-show="form.email.$dirty && form.email.$error.email">Email is invalid.</li>
+			<li ng-show="form.username.$dirty && form.username.$invalid">User name is required.</li>
+			<li ng-show="form.password.$dirty && form.password.$invalid">Password is required.</li>
+			<li ng-show="form.password_confirmation.$dirty && !isPasswordConfirmationValid(user)">Passwords does not match.</li>
+			<li ng-show="!!serverErrorData" ng-bind="serverErrorData.message"></li>
+		</ul>
+	</div>
+	<form role="form" name="form" ng-submit="submit(user)">
+		<fieldset>
+			<legend>Register</legend>
+			<label>First Name</label>
+			<div class="form-group">
+				<input type="text" name="firstname" class="form-control" placeholder="First name" ng-model="user.firstname" ng-disabled="isFormSubmiting()">
+			</div>
+			<label>Sur Name</label>
+			<div class="form-group">
+				<input type="text" name="surname" class="form-control" placeholder="Sur name" ng-model="user.surname" ng-disabled="isFormSubmiting()">
+			</div>
+			<label>Email</label>
+			<div class="form-group">
+				<input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required ng-disabled="isFormSubmiting()">
+			</div>
+			<label>Username</label>
+			<div class="form-group input-group">
+				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+				<input type="text" name="username" class="form-control" placeholder="Username" ng-model="user.username" required ng-disabled="isFormSubmiting()">
+			</div>
+			<label>Password</label>
+			<div class="form-group input-group">
+				<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+				<input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" required ng-disabled="isFormSubmiting()">
+			</div>
+			<label>Password</label>
+			<div class="form-group">
+				<input type="password" name="password_confirmation" class="form-control" ng-model="user.password_confirmation" placeholder="Password confirmation" required ng-disabled="isFormSubmiting()">
+			</div>
+			<button type="submit" class="btn btn-primary" ng-disabled="form.$invalid || isFormSubmiting()">
+				<i class="fa fa-sign-in"></i> Submit</button>
+		</fieldset>
+	</form>
+</div>

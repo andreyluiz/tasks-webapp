@@ -13,12 +13,7 @@ angular.module('tasks-webapp')
         $scope.setServerError = function(serverErrorData) {
             $scope.serverErrorData = serverErrorData;
         };
-
-        $scope.showErrorMessage = function(form) {
-            return (form.username.$dirty && form.username.$invalid) || 
-                   (form.password.$dirty && form.password.$invalid) || !!$scope.serverErrorData;
-        };
-
+        
         $scope.isFormSubmiting = function() {
             return $scope.isSubmiting;
         };

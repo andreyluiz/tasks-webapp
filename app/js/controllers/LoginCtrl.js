@@ -15,4 +15,9 @@ angular.module('tasks-webapp')
                     });
             };
         };
+
+        $scope.showErrorMessage = function(form) {
+            return (form.username.$dirty && form.username.$invalid) || 
+                   (form.password.$dirty && form.password.$invalid) || !!$scope.serverErrorData;
+        };
     }]);
