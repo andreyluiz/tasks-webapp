@@ -1,4 +1,4 @@
-angular.module('tasks-webapp', ['ngRoute', 'angular-md5'])
+angular.module('tasks-webapp')    
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/login', {

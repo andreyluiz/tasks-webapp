@@ -17,5 +17,9 @@ angular.module('tasks-webapp')
             return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.user.role.name))
         };
 
+        authService.register = function(userInfo) {
+            return $http.post(endpoint + '/api/users/register', userInfo);
+        };
+
         return authService;
     }]);

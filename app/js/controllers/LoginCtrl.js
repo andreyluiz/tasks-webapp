@@ -10,7 +10,6 @@ angular.module('tasks-webapp')
                         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, data);
                     })
                     .error(function(data, status) {
-                        $scope.form.$setPristine();
                         $rootScope.$broadcast(AUTH_EVENTS.loginFailed, data);
                     });
             };

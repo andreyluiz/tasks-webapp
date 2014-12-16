@@ -1,7 +1,17 @@
 angular.module('tasks-webapp')
-	.controller('RegisterCtrl', ['$scope', function ($scope) {
-        $scope.submit = function(user) {
+	.controller('RegisterCtrl', ['$scope', 'AuthService', 'AUTH_EVENTS', '$rootScope', function ($scope, AuthService, AUTH_EVENTS, $rootScope) {
 
+        $scope.submit = function(user) {
+            $scope.setFormSubmiting(true);
+            $scope.form.$setPristine();
+            delete user.password_confirmation;
+            AuthService.register(user)
+                .success(function(data, status) {
+                    $rootScope.$broadcast(AUTH_EVENTS.registerSuccess, data);
+                })
+                .error(function(data, status) {
+                    $rootScope.$broadcast(AUTH_EVENTS.registerFailed, data);
+                });
         };
 
 		$scope.showErrorMessage = function(form) {

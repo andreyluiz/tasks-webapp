@@ -5,6 +5,7 @@ angular.module('tasks-webapp')
         $scope.userRoles = USER_ROLES;
         $scope.isAuthorized = AuthService.isAuthorized;
         $scope.isAuthenticated = AuthService.isAuthenticated;
+        $scope.registerSuccessfull = false;
 
         $scope.setCurrentUser = function(user) {
             $scope.currentUser = user;
@@ -22,6 +23,14 @@ angular.module('tasks-webapp')
             $scope.isSubmiting = state;
         };
 
+        $scope.setRegisterSuccessfull = function(state) {
+            $scope.registerSuccessfull = state;
+        };
+
+        $scope.isSuccessfullyRegistered = function() {
+            return $scope.registerSuccessfull;
+        };
+
         $scope.$on(AUTH_EVENTS.loginSuccess, function(event, data) {
             $scope.setFormSubmiting(false);
             Session.create(data);
@@ -30,6 +39,17 @@ angular.module('tasks-webapp')
         });
 
         $scope.$on(AUTH_EVENTS.loginFailed, function(event, data) {
+            $scope.setServerError(data);
+            $scope.setFormSubmiting(false);
+        });
+
+        $scope.$on(AUTH_EVENTS.registerSuccess, function(event, data) {
+            $scope.setFormSubmiting(false);
+            //Possivelmente exibir uma mensagem de sucesso de registro
+            $scope.setRegisterSuccessfull(true);
+        });
+
+        $scope.$on(AUTH_EVENTS.registerFailed, function(event, data) {
             $scope.setServerError(data);
             $scope.setFormSubmiting(false);
         });
