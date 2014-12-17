@@ -9,6 +9,10 @@ angular.module('tasks-webapp')
                 templateUrl: 'partials/register.html',
                 controller: 'RegisterCtrl'
             })
+            .when('/confirm', {
+                templateUrl: 'partials/confirm.html',
+                controller: 'ConfirmCtrl'
+            })
             .when('/tasks', {
                 templateUrl: 'partials/tasks.html',
                 controller: 'TasksCtrl'

@@ -1,0 +1,10 @@
+<div class="container">
+	<h1><i ng-class="{true: 'fa fa-times-circle-o', false: 'fa fa-check-circle-o'}[hasServerError()]"></i> Registration confirmation</h1>
+	<div ng-if="!hasServerError()">
+		<p>Your registration was successfully confirmed. Proceed to <a href="#/login">login</a> to gain access to your profile.</p>
+	</div>
+	<div ng-if="hasServerError()">
+		<p>Your registration could not be completed due the following problem:</p>
+		<p>{{ serverErrorData.message }}</p>
+	</div>
+</div>

@@ -14,6 +14,10 @@ angular.module('tasks-webapp')
         $scope.setServerError = function(serverErrorData) {
             $scope.serverErrorData = serverErrorData;
         };
+
+        $scope.hasServerError = function() {
+            return !!$scope.serverErrorData;
+        };
         
         $scope.isFormSubmiting = function() {
             return $scope.isSubmiting;
@@ -45,12 +49,18 @@ angular.module('tasks-webapp')
 
         $scope.$on(AUTH_EVENTS.registerSuccess, function(event, data) {
             $scope.setFormSubmiting(false);
-            //Possivelmente exibir uma mensagem de sucesso de registro
             $scope.setRegisterSuccessfull(true);
         });
 
         $scope.$on(AUTH_EVENTS.registerFailed, function(event, data) {
             $scope.setServerError(data);
             $scope.setFormSubmiting(false);
+        });
+
+        $scope.$on(AUTH_EVENTS.confirmSuccess, function(event, data) {
+        });
+
+        $scope.$on(AUTH_EVENTS.confirmFailed, function(event, data) {
+            $scope.setServerError(data);
         });
     }]);

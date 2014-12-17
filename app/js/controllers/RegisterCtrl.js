@@ -1,6 +1,8 @@
 angular.module('tasks-webapp')
 	.controller('RegisterCtrl', ['$scope', 'AuthService', 'AUTH_EVENTS', '$rootScope', function ($scope, AuthService, AUTH_EVENTS, $rootScope) {
 
+        $scope.setRegisterSuccessfull(false);
+
         $scope.submit = function(user) {
             $scope.setFormSubmiting(true);
             $scope.form.$setPristine();

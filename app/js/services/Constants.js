@@ -3,7 +3,9 @@ angular.module('tasks-webapp')
         loginSuccess: 'auth-login-success',
         loginFailed: 'auth-login-failed',
         registerSuccess: 'auth-register-success',
-        registerFailed: 'auth-register-failed'
+        registerFailed: 'auth-register-failed',
+        confirmSuccess: 'auth-confirm-success',
+        confirmFailed: 'auth-confirm-failed'
     })
     .constant('USER_ROLES', {
         all: '*',

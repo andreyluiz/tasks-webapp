@@ -6,6 +6,14 @@ angular.module('tasks-webapp')
             return $http.post(endpoint + '/api/users/login', loginInfo);
         };
 
+        authService.register = function(userInfo) {
+            return $http.post(endpoint + '/api/users/register', userInfo);
+        };
+
+        authService.confirm = function(confirmation) {
+            return $http.post(endpoint + '/api/users/confirm', confirmation);
+        };
+
         authService.isAuthenticated = function() {
             return !!Session.user && !Session.hasExpired();
         }
@@ -15,10 +23,6 @@ angular.module('tasks-webapp')
                 authorizedRoles = [authorizedRoles];
             }
             return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.user.role.name))
-        };
-
-        authService.register = function(userInfo) {
-            return $http.post(endpoint + '/api/users/register', userInfo);
         };
 
         return authService;
